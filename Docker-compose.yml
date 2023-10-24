@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   configserver:
-    image: tonyyou998/ecommerce_config_server
+    image: tonyyou998/ecommerce_config_server:0.0.3
     mem_limit: 700m
     ports:
       - "8071:8071"
@@ -24,7 +24,7 @@ services:
         max_attempts: 3
         window: 120s
     environment:
-      SPRING_PROFILES_ACTIVE: default
+      SPRING_PROFILES_ACTIVE: dev
       SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
       
 
