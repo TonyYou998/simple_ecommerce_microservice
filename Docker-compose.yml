@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+
+  configserver:
+    image: tonyyou998/ecommerce_config_server
+    mem_limit: 700m
+    ports:
+      - "8071:8071"
+    networks:
+     - uit
+  eurekaserver:
+    image: tonyyou998/ecommerce_eureka_server
+    ports:
+      - "8761:8761"
+    networks:
+    - uit
+    depends_on:
+      - configserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 20s
+        max_attempts: 3
+        window: 120s
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+      
+
+networks:
+  uit:
