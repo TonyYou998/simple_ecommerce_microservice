@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.uit</groupId>
     <artifactId>eureka_server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>eureka_server</name>
     <description>eureka_server</description>
     <properties>
@@ -47,6 +47,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+            <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
     </dependencies>
     <dependencyManagement>
         <dependencies>

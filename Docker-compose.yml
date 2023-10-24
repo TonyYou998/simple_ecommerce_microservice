@@ -10,7 +10,7 @@ services:
     networks:
      - uit
   eurekaserver:
-    image: tonyyou998/ecommerce_eureka_server
+    image: tonyyou998/ecommerce_eureka_server:0.0.2
     ports:
       - "8761:8761"
     networks:
