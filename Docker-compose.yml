@@ -1,32 +1,99 @@
 version: "3.8"
 
 services:
-
-  configserver:
-    image: tonyyou998/ecommerce_config_server:0.0.3
-    mem_limit: 700m
-    ports:
-      - "8071:8071"
-    networks:
-     - uit
-  eurekaserver:
-    image: tonyyou998/ecommerce_eureka_server:0.0.2
-    ports:
-      - "8761:8761"
-    networks:
-    - uit
-    depends_on:
-      - configserver
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 20s
-        max_attempts: 3
-        window: 120s
+  productDb:
+    image: mysql:5.7
     environment:
-      SPRING_PROFILES_ACTIVE: dev
-      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=productDb
+    ports:
+      - "4000:3306"
+    networks:
+      - uit
+    volumes:
+      - productDb:/var/lib/mysql
+
+  orderDb:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=orderDb
+    ports:
+      - "4001:3306"
+    networks:
+      - uit
+    volumes:
+      - orderDb:/var/lib/mysql
+  customerDb:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=customerDb
+    ports:
+      - "4002:3306"
+    networks:
+      - uit
+    volumes:
+      - customerDb:/var/lib/mysql
       
+  cartDb:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=cartDb
+    ports:
+      - "4003:3306"
+    networks:
+      - uit
+    volumes:
+      - cartDb:/var/lib/mysql
+
+#  configserver:
+#    image: tonyyou998/ecommerce_config_server:0.0.3
+#    mem_limit: 700m
+#    ports:
+#      - "8071:8071"
+#    networks:
+#     - uit
+#  eurekaserver:
+#    image: tonyyou998/ecommerce_eureka_server:0.0.2
+#    ports:
+#      - "8761:8761"
+#    networks:
+#    - uit
+#    depends_on:
+#      - configserver
+#    deploy:
+#      restart_policy:
+#        condition: on-failure
+#        delay: 20s
+#        max_attempts: 3
+#        window: 120s
+#    environment:
+#      SPRING_PROFILES_ACTIVE: dev
+#      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+#
+
+
+
+  # orderDb:
+  #   image: mysql:5.7
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=1234
+  #     - MYSQL_DATABASE=orderDb
+  #   ports:
+  #     - "4001:3306"
+  #   networks:
+  #     - uit
+  #   volumes:
+  #     - orderDb:/var/lib/mysql
+
+volumes:
+  productDb:
+  orderDb:
+  customerDb:
+  cartDb:
+
 
 networks:
   uit:

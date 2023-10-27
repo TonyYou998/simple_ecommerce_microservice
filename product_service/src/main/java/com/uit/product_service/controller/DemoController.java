@@ -13,6 +13,7 @@ public class DemoController {
     @GetMapping("/demo")
     public Object demo(@RequestHeader("ecommerce-correlation-id") String correctlationId ){
         logger.debug("CorreclationId:{}",correctlationId);
+
         return "Product service";
     }
 }

@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27d20f7a-f6fd-4125-a61d-7a80b8e1f772" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart_service/src/main/java/com/uit/cart_service/controller/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart_service/src/main/java/com/uit/cart_service/controller/DemoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart_service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cart_service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer_service/src/main/java/com/uit/customer_service/controller/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer_service/src/main/java/com/uit/customer_service/controller/DemoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer_service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/customer_service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka_server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/eureka_server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order_service/src/main/java/com/uit/order_service/OrderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/src/main/java/com/uit/order_service/OrderServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order_service/src/main/java/com/uit/order_service/controller/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/src/main/java/com/uit/order_service/controller/DemoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order_service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product_service/src/main/java/com/uit/product_service/ProductServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/product_service/src/main/java/com/uit/product_service/ProductServiceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product_service/src/main/java/com/uit/product_service/controller/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/product_service/src/main/java/com/uit/product_service/controller/DemoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product_service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/product_service/src/main/resources/application.properties" afterDir="false" />
     </list>
@@ -50,21 +46,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/MyWorkspace/Java/Simple_Ecommerce",
-    "nodejs_package_manager_path": "npm",
-    "spring.configuration.checksum": "ad39bc7dec2829b4576ad07c0ccbc9e8"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/MyWorkspace/Java/Simple_Ecommerce&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;ad39bc7dec2829b4576ad07c0ccbc9e8&quot;
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -72,7 +69,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayserverApplication">
+  <component name="RunManager" selected="Spring Boot.ProductServiceApplication">
     <configuration name="CartServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="cart_service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.uit.cart_service.CartServiceApplication" />
@@ -122,6 +119,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Docker-compose.yml.productDb: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="productDb" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="Docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.Docker-compose.yml.productDb: Compose Deployment" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -139,7 +154,10 @@
       <workItem from="1698177378797" duration="2849000" />
       <workItem from="1698210722518" duration="3906000" />
       <workItem from="1698215988801" duration="2099000" />
-      <workItem from="1698310468881" duration="9128000" />
+      <workItem from="1698310468881" duration="16801000" />
+      <workItem from="1698338592863" duration="4054000" />
+      <workItem from="1698343604806" duration="990000" />
+      <workItem from="1698345079541" duration="1096000" />
     </task>
     <servers />
   </component>
