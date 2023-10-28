@@ -1,6 +1,8 @@
 package com.uit.product_service.seeder;
-import java.util.LinkedList;
+import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -17,16 +19,18 @@ import lombok.AllArgsConstructor;
 @Transactional
 @AllArgsConstructor
 public class ProductSeeder {
+    
     private ProductRepository productRepository;
     @EventListener
     public void seedProduct(ContextRefreshedEvent event){
-        List<Product> lstProducts=new LinkedList<>();
-            for(int i=0;i<100;i++){
+        Random random = new Random();
+        List<Product> lstProducts=new ArrayList<>();
+            for(int i=1;i<=23;i++){
                 Product product=new Product();
-                product.setName("Demo1");
+                product.setName("Demo"+i);
                 product.setDescription("this is a demo");
-                product.setImageUrl("http://localhost:8084/image.jpg");
-                product.setPrice("250");
+                product.setImageUrl("https://picsum.photos/id/"+i+"/350/300");
+                product.setPrice(String.valueOf(random.nextInt(500)));
                 lstProducts.add(product);
             }
             productRepository.saveAll(lstProducts);

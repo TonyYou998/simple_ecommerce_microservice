@@ -7,5 +7,7 @@ import com.uit.product_service.dto.ProductDto;
 public interface ProductService {
 
     public List<ProductDto> getAllProducts();
+
+    public ProductDto getPorductById(String id);
     
 }

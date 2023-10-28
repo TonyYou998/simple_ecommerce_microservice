@@ -3,6 +3,7 @@ package com.uit.product_service.service.impl;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,5 +46,28 @@ public class ProductServiceImpl implements ProductService  {
         return null;
         
     }
-    
+    @Override
+    public ProductDto getPorductById(String id){
+        try {
+            Long productId=Long.parseLong(id);
+            Product product= productRepository.findById(productId).get();
+            ProductDto dto=new ProductDto();
+            dto.setId(String.valueOf(product.getId()));
+            dto.setDescription(product.getDescription());
+            dto.setImageUrl(product.getImageUrl());
+            dto.setName(product.getName());
+            dto.setPrice(product.getPrice());
+            return dto;
+        } catch (NumberFormatException ex) {
+        
+            logger.debug(ex.getMessage());
+            throw new NumberFormatException();
+        }
+        catch(NoSuchElementException ex){
+            logger.debug(ex.getMessage());
+            throw new NoSuchElementException();
+
+        }
+        
+    }
 }

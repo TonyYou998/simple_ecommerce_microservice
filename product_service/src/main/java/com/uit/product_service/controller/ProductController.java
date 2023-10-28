@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uit.product_service.dto.ProductDto;
@@ -22,6 +24,11 @@ public class ProductController {
              List<ProductDto> listDto= productService.getAllProducts();
             return ResponseHandler.getResponse(listDto, HttpStatus.OK);
             
+    }
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Object> getDetailProduct(@PathVariable("id") String id){
+        ProductDto dto=productService.getPorductById(id);
+        return ResponseHandler.getResponse(dto, HttpStatus.OK);
     }
     
 }

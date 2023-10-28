@@ -12,6 +12,12 @@ spring:
     active: 'dev'
   cloud:
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: "http://localhost:3000"
+            allowed-methods: "*"
+            allowed-headers: "*"
       discovery:
         locator:
           enabled: true
