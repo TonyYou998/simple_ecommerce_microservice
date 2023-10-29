@@ -67,8 +67,8 @@ services:
    deploy:
      restart_policy:
        condition: on-failure
-       delay: 20s
-       max_attempts: 2
+       delay: 10s
+       max_attempts: 3
        window: 120s
    environment:
      SPRING_PROFILES_ACTIVE: dev
@@ -87,15 +87,15 @@ services:
    deploy:
      restart_policy:
        condition: on-failure
-       delay: 20s
-       max_attempts: 2
+       delay: 40s
+       max_attempts: 3
        window: 120s
    environment:
     SPRING_PROFILES_ACTIVE: prod
     SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
  
   product_service:
-   image: tonyyou998/ecommerce_product_service:1.1.0
+   image: tonyyou998/ecommerce_product_service:1.1.1
    ports:
      - "8084:8084"
    networks:
@@ -108,7 +108,7 @@ services:
      restart_policy:
        condition: on-failure
        delay: 60s
-       max_attempts: 2
+       max_attempts: 3
        window: 120s
    environment:
     SPRING_PROFILES_ACTIVE: prod

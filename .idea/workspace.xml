@@ -7,13 +7,11 @@
     <list default="true" id="27d20f7a-f6fd-4125-a61d-7a80b8e1f772" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order_service/src/main/java/com/uit/order_service/OrderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/src/main/java/com/uit/order_service/OrderServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order_service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_service/src/main/java/com/uit/product_service/ProductServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/product_service/src/main/java/com/uit/product_service/ProductServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_service/src/main/java/com/uit/product_service/controller/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/product_service/src/main/java/com/uit/product_service/controller/DemoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/product_service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cart_service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart_service/src/main/java/com/uit/cart_service/CartServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart_service/src/main/java/com/uit/cart_service/CartServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart_service/src/main/java/com/uit/cart_service/entity/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart_service/src/main/java/com/uit/cart_service/entity/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce/src/layout/DetailProductLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce/src/layout/DetailProductLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product_service/src/main/java/com/uit/product_service/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/product_service/src/main/java/com/uit/product_service/controller/ProductController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +23,7 @@
       <list>
         <option value="Kotlin Class" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -42,6 +41,7 @@
     </option>
   </component>
   <component name="ProjectId" id="2XCloEmqMrWY7A6Y4iMxRXp3BOI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -58,10 +58,13 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/MyWorkspace/Java/Simple_Ecommerce&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;ad39bc7dec2829b4576ad07c0ccbc9e8&quot;
   }
 }</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -158,6 +161,8 @@
       <workItem from="1698338592863" duration="4054000" />
       <workItem from="1698343604806" duration="990000" />
       <workItem from="1698345079541" duration="1096000" />
+      <workItem from="1698520167591" duration="694000" />
+      <workItem from="1698520995256" duration="3795000" />
     </task>
     <servers />
   </component>

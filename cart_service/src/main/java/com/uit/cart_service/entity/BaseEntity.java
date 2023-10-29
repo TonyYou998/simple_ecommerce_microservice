@@ -2,8 +2,10 @@ package com.uit.cart_service.entity;
 
 import java.time.LocalDateTime;
 
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
@@ -13,7 +15,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 @MappedSuperclass
-@EntityListeners(EntityListeners.class)
+@EntityListeners(AuditingEntityListener.class)
+@Data
 public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

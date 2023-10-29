@@ -87,7 +87,7 @@ export default function DetailProductLayout() {
             variant='h3'
             fontWeight="bold"
           >
-            Demo
+            {content && content.name}
           </Typography>
           <Typography
             variant='body1'
@@ -102,7 +102,7 @@ export default function DetailProductLayout() {
             variant='h6'
             color="rgba(91,33,182)"
           >
-            $25
+            ${content && content.price}
           </Typography>
           <Box
             

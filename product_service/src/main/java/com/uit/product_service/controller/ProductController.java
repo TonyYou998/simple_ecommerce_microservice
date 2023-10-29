@@ -30,5 +30,14 @@ public class ProductController {
         ProductDto dto=productService.getPorductById(id);
         return ResponseHandler.getResponse(dto, HttpStatus.OK);
     }
-    
+    @GetMapping("/validate/{id}")
+     public boolean validateProduct(@PathVariable("id") String id){
+             ProductDto dto=productService.getPorductById(id);
+        return dto != null;
+    }
+    @GetMapping("/get/{id}")
+    public ProductDto getProduct(@PathVariable("id") String id){
+        ProductDto dto=productService.getPorductById(id);
+        return dto;
+    }
 }
