@@ -8,6 +8,11 @@ eureka:
     service-url:
       default-zone: 'http://localhost:8761/eureka/'
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: "http://localhost:7080/realms/master/protocol/openid-connect/certs"
   profiles:
     active: 'dev'
   cloud:

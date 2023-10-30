@@ -1,17 +1,17 @@
 version: "3.8"
 
 services:
-  productDb:
-    image: mysql:5.7
-    environment:
-      - MYSQL_ROOT_PASSWORD=1234
-      - MYSQL_DATABASE=productDb
-    ports:
-      - "4000:3306"
-    networks:
-      - uit
-    volumes:
-      - productDb:/var/lib/mysql
+  # productDb:
+  #   image: mysql:latest
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=1234
+  #     - MYSQL_DATABASE=productDb
+  #   ports:
+  #     - "4000:3306"
+  #   networks:
+  #     - uit
+  #   volumes:
+  #     - productDb:/var/lib/mysql
 
   # orderDb:
   #   image: mysql:5.7
@@ -37,7 +37,7 @@ services:
   #     - customerDb:/var/lib/mysql
       
   # cartDb:
-  #   image: mysql:5.7
+  #   image: mysql:8.0.20
   #   environment:
   #     - MYSQL_ROOT_PASSWORD=1234
   #     - MYSQL_DATABASE=cartDb
@@ -75,44 +75,44 @@ services:
      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
 
 
-  gatewayserver:
-   image: tonyyou998/ecommerce_gateway_server:1.0.2
-   ports:
-     - "8080:8080"
-   networks:
-   - uit
-   depends_on:
-     - configserver
-     - eurekaserver
-   deploy:
-     restart_policy:
-       condition: on-failure
-       delay: 40s
-       max_attempts: 3
-       window: 120s
-   environment:
-    SPRING_PROFILES_ACTIVE: prod
-    SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+  # gatewayserver:
+  #  image: tonyyou998/ecommerce_gateway_server:1.0.2
+  #  ports:
+  #    - "8080:8080"
+  #  networks:
+  #  - uit
+  #  depends_on:
+  #    - configserver
+  #    - eurekaserver
+  #  deploy:
+  #    restart_policy:
+  #      condition: on-failure
+  #      delay: 40s
+  #      max_attempts: 3
+  #      window: 120s
+  #  environment:
+  #   SPRING_PROFILES_ACTIVE: prod
+  #   SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
  
-  product_service:
-   image: tonyyou998/ecommerce_product_service:1.1.1
-   ports:
-     - "8084:8084"
-   networks:
-   - uit
-   depends_on:
-     - configserver
-     - eurekaserver
-     - gatewayserver
-   deploy:
-     restart_policy:
-       condition: on-failure
-       delay: 60s
-       max_attempts: 3
-       window: 120s
-   environment:
-    SPRING_PROFILES_ACTIVE: prod
-    SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+  # product_service:
+  #  image: tonyyou998/ecommerce_product_service:1.1.1
+  #  ports:
+  #    - "8084:8084"
+  #  networks:
+  #  - uit
+  #  depends_on:
+  #    - configserver
+  #    - eurekaserver
+  #    - gatewayserver
+  #  deploy:
+  #    restart_policy:
+  #      condition: on-failure
+  #      delay: 60s
+  #      max_attempts: 3
+  #      window: 120s
+  #  environment:
+  #   SPRING_PROFILES_ACTIVE: prod
+  #   SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
     # SPRING_DATASOURCE_URL: jdbc:mysql://productDb:3306/productDb
 
 
@@ -130,8 +130,8 @@ services:
 
 volumes:
   productDb:
-  orderDb:
-  customerDb:
+#   orderDb:
+#   customerDb:
   cartDb:
 
 
