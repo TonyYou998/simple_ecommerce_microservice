@@ -91,5 +91,31 @@ public class CartServiceImpl implements CartService {
         throw new NumberFormatException();
        }
     }
+
+    @Override
+    public Cart findCartById(String cartId) {
+        // TODO Auto-generated method stub
+      try {
+            Cart cart= cartRepository.findById(Long.parseLong(cartId)).get();
+            return cart;
+      } catch (NumberFormatException e) {
+        // TODO: handle exception
+        throw new NumberFormatException();
+      }
+    }
+
+    @Override
+    public void updateStatus(CartStatus done) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateStatus'");
+    }
+
+    @Override
+    public void updateStatus(Cart cart, CartStatus done) {
+        // TODO Auto-generated method stub
+       cart.setStatus(done.toString());
+
+        cartRepository.save(cart);
+    }
     
 }

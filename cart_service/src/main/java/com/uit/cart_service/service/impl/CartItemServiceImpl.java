@@ -155,6 +155,29 @@ public class CartItemServiceImpl implements CartItemService {
         
         return null;
     }
+
+    @Override
+    public List<CartItemDto> getcartItemByCart(String cartId) {
+        // TODO Auto-generated method stub
+       try {
+            Cart cart=cartService.findCartById(cartId);
+            List<CartItem> listCartItems=cartItemRepository.findByCart(cart);
+            List<CartItemDto> listCartItemDtos=new ArrayList<>();
+            for(CartItem cartItem :listCartItems){
+                    CartItemDto cartItemDto=new CartItemDto();
+                    cartItemDto.setCartId(cartItem.getCart().getId().toString());
+                    cartItemDto.setId(cartItem.getId().toString());
+                    cartItemDto.setQuantity(cartItem.getQuantity().toString());
+                    listCartItemDtos.add(cartItemDto);
+            
+            }
+            cartService.updateStatus(cart,CartStatus.DONE);
+            return listCartItemDtos;
+       } catch (NumberFormatException ex) {
+        // TODO: handle exception
+        throw new NumberFormatException();
+       }
+    }
    
 
     

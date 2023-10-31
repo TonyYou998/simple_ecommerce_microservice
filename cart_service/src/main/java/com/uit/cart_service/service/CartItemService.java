@@ -20,6 +20,8 @@ public interface CartItemService {
 
     CartItemDto removeItem(CartItemDto dto);
 
+    List<CartItemDto> getcartItemByCart(String cartId);
+
    
     
 }

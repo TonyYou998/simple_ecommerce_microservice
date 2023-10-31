@@ -13,15 +13,17 @@ services:
     networks:
       - uit
 
-  # orderDb:
-  #   image: mysql:latest
-  #   environment:
-  #     - MYSQL_ROOT_PASSWORD=1234
-  #     - MYSQL_DATABASE=orderDb
-  #   ports:
-  #     - "4001:3306"
-  #   volumes:
-  #     - orderDb:/var/lib/mysql
+  orderDb:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=orderDb
+    ports:
+      - "4001:3306"
+    volumes:
+      - orderDb:/var/lib/mysql
+    networks:
+      - uit
 
   # customerDb:
   #   image: mysql:latest
@@ -154,13 +156,34 @@ services:
     SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
     SPRING_DATASOURCE_URL: jdbc:mysql://cartDb:3306/cartDb
 
+  order_service:
+   image: tonyyou998/ecommerce_order_service:1.0.0
+   ports:
+     - "8083:8083"
+   networks:
+   - uit
+   depends_on:
+     - configserver
+     - eurekaserver
+     - gatewayserver
+     - orderDb
+   deploy:
+     restart_policy:
+      condition: on-failure
+      delay: 120s
+      max_attempts: 3
+      window: 120s
+   environment:
+    SPRING_PROFILES_ACTIVE: prod
+    SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+    SPRING_DATASOURCE_URL: jdbc:mysql://orderDb:3306/orderDb
 
 
 
 volumes:
   productDb:
   cartDb:
-  # orderDb:
+  orderDb:
   # customerDb:
   
 networks:

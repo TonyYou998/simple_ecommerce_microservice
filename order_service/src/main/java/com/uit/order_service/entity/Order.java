@@ -8,13 +8,14 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 
-@Data
 @Entity
 @Table(name="oders")
+
+@Data
 public class Order extends BaseEntity {
 
     @Column(name="customer_id")
-    private final String CustomerId=null;
+    private  String CustomerId=null;
     private String status=OrderStatus.PENDING.toString();
     private String price;
     @OneToMany(mappedBy = "order")
