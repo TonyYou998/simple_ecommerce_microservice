@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.uit</groupId>
     <artifactId>cart_service</artifactId>
-    <version>1.0.0s</version>
+    <version>1.1.0</version>
     <name>cart_service</name>
     <description>cart_service</description>
     <properties>
@@ -89,6 +89,7 @@
     </dependencyManagement>
 
     <build>
+    <finalName>cart-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

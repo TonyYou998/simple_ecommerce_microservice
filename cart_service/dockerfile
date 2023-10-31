@@ -1,0 +1,3 @@
+FROM openjdk:latest as build
+COPY target/cart-service.jar cart-service.jar
+ENTRYPOINT [ "java","-jar","cart-service.jar" ]

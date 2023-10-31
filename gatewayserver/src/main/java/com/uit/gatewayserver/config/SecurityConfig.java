@@ -21,8 +21,12 @@ import reactor.core.publisher.Mono;
 public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityWebFilterChain(ServerHttpSecurity serverHttpSecurity){
-        serverHttpSecurity.authorizeExchange(exchanges->exchanges.pathMatchers(HttpMethod.GET).permitAll()
-        .pathMatchers("/api/v1/cart-service/**").hasRole("cart_role")
+        serverHttpSecurity.authorizeExchange(exchanges->exchanges
+        .pathMatchers("/api/v1/product-service/**")
+        .permitAll()
+        .pathMatchers("/api/v1/cart-service/**")
+        .hasRole("customer")
+        
         ).oauth2ResourceServer(oauth2ResourceServer->oauth2ResourceServer.jwt(jwt->jwt.jwtAuthenticationConverter(grantedAuthoritiesExtractor())));
         serverHttpSecurity.csrf(csrf->csrf.disable());
         return serverHttpSecurity.build();

@@ -10,6 +10,7 @@ public class FilterUtility {
     public static final String CORRELATION_ID = "ecommerce-correlation-id";
 
     public String getCorrelationId(HttpHeaders requestHeaders) {
+            
         if (requestHeaders.get(CORRELATION_ID) != null) {
             List<String> requestHeaderList = requestHeaders.get(CORRELATION_ID);
             return requestHeaderList.stream().findFirst().get();
