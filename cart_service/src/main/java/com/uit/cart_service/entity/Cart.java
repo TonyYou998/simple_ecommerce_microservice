@@ -15,7 +15,7 @@ import lombok.Data;
 @Table(name="carts")
 public class Cart extends BaseEntity {
     @Column(name = "customer_id")
-    private Long customerId;
+    private String customerId;
     private String status=CartStatus.EMPTY.toString();
     @OneToMany(mappedBy = "cart")
     Set<CartItem> setCartItem=new LinkedHashSet<>();

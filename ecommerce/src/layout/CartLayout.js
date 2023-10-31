@@ -1,12 +1,12 @@
 import { FormControl, Input } from '@mui/base'
-import { Card, CardContent, CardMedia, Container, ImageList, ImageListItem, InputLabel, Typography } from '@mui/material'
+import { Card, CardContent, CardMedia, Container, IconButton, ImageList, ImageListItem, InputLabel, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { mainAPi } from '../api';
 import { useParams } from 'react-router-dom';
-
+import AddIcon from '@mui/icons-material/Add';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -14,9 +14,17 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Link } from 'react-router-dom';
+
+import {jwtDecode}from "jwt-decode";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import RemoveIcon from '@mui/icons-material/Remove';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+let total=0;
 function createData(product,quantity,price) {
     return { product,quantity,price };
   }
+
   const rows = [
     createData('Frozen yoghurt', 159, 6.0),
     createData('Ice cream sandwich', 237, 9.0),
@@ -26,11 +34,15 @@ function createData(product,quantity,price) {
   ];
 
 export default function CartLayout() {
+  const [qua,setQua]=useState(0);
     const[items,setItems]=useState();
     useEffect(()=>{
+
         async function fetchItem(){
+          const token=jwtDecode(localStorage.getItem("token"));
+          const userId=token.sub;
             try {
-              const response=await mainAPi.get("/cart-service/cart/1")
+              const response=await mainAPi.get(`/cart-service/cart/${userId}`)
               setItems(response.data);
             } catch (error) {
               console.log(error);
@@ -39,32 +51,84 @@ export default function CartLayout() {
           
           fetchItem();
     },[]);
- 
+ const handleAddItem=(item)=>{
+  
+    mainAPi.post("/cart-service/cart/add-item",item)
+    .then((result)=>{
+      const{content}=result.data;
+      setQua(content.quantity);
+      // console.log(content);
+      item.quantity++;
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+ }
+ const handleRemoveItem=(item)=>{
+  
+  mainAPi.post("/cart-service/cart/remove-item",item)
+  .then((result)=>{
+    const{content}=result.data;
+    console.log(content);
+    setQua(content.quantity);
+    // console.log(content);
+    item.quantity++;
+  })
+  .catch((err)=>{
+      console.log(err);
+  })
+}
     const renderItem=(data)=>{
-           
+           console.log(qua);
             if(data){
                 const {content}=data;
-                console.log(content);     
+                    
               return content.map((item,index)=>{
+                
+                  total+=parseInt(qua)*parseFloat(item.price);
                 return (
                     <TableRow key={index}>
-                    <TableCell component="th" scope="row">
-                    {item.productName}
-                    </TableCell>
-                    <TableCell align="right">{item.quality}</TableCell>
-                    <TableCell align="right">{item.price}</TableCell>
+                      <Link  to={`/detail/${item.productId}`} style={{textDecoration: 'none'}}>
+                      <TableCell component="th" align='center' scope="row" sx={{
+                        display:"flex",
+                        alignItems:"center",
+                        justifyContent:"space-around"
+                      }}>
+                    <img src={item.imageUrl} width="75" height="75" />
                    
+                    <Typography
+                      variant='subtitle1'
+                     
+                      
+                    >
+                      {item.productName}
+                    </Typography>
+                    </TableCell>
+                      </Link>
+                    
+                    <TableCell align="center">{qua===0?item.quantity:qua}</TableCell>
+                    <TableCell align="center">{parseFloat(item.price)*parseInt(item.quantity)}$</TableCell>
+                    <TableCell align='center'>
+                      <IconButton color='secondary'  onClick={()=>handleAddItem(item)}>
+                        <AddIcon/>
+                      </IconButton>
+                      <IconButton color='secondary'
+                        onClick={()=>handleRemoveItem(item)}
+                      >
+                        <RemoveIcon/>
+                      </IconButton>
+                    </TableCell>
                   </TableRow>
                 )
 
               })  
             }
     }
-   
+ 
     return (
         <Container maxWidth="md"
             sx={{
-                paddingTop:"170px"
+                paddingTop:"100px"
             }}
         >
                 <Box>
@@ -76,25 +140,69 @@ export default function CartLayout() {
                     >
                         Your Cart
                     </Typography>
-                    <TableContainer component={Paper}>
+                    <TableContainer component={Paper} 
+                      
+                    >
       <Table sx={{ minWidth: 650 }} aria-label="caption table">
        
         <TableHead>
+          <caption></caption>
           <TableRow>
-            <TableCell>Product</TableCell>
-            <TableCell align="right">Quantity</TableCell>
-            <TableCell align="right">Price</TableCell>
+            <TableCell align='center'>Product</TableCell>
+            <TableCell align="center">Quantity</TableCell>
+            <TableCell align="center">Price</TableCell>
+            <TableCell align='center'>
+              +/-
+            </TableCell>
 
-    
           </TableRow>
         </TableHead>
         <TableBody>
             {
                 renderItem(items)
             }
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell>
+                <Link to="/">
+                <Button 
+                  variant='contained'
+                  startIcon={<ArrowBackIcon/>}
+                  size='medium'
+                  // color='rgba(255,255,255)'
+                >
+                  Back To Shop
+                </Button>
+                </Link>
+                </TableCell>
+              <TableCell align='center'
+                
+                >
+                  <Typography
+                    variant='h6'
+                    color="#5b21b6"
+                    fontWeight="bold"
+                  >
+                       ${total}
+                  </Typography>
+              </TableCell>
+              <TableCell align='center'>
+                <Button 
+                  variant='contained'
+                  endIcon={<ArrowForwardIcon/>}
+                  size='medium'
+                  // color='rgba(255,255,255)'
+                >
+                  Checkout
+                </Button>
+              </TableCell>
+             
+            </TableRow>
         </TableBody>
+           
       </Table>
     </TableContainer>
+   
                 </Box>
         </Container>
     )

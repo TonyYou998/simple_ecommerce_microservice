@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CartServiceApplication",
+            "request": "launch",
+            "mainClass": "com.uit.cart_service.CartServiceApplication",
+            "projectName": "cart_service"
+        },
+        {
+            "type": "java",
             "name": "GatewayserverApplication",
             "request": "launch",
             "mainClass": "com.uit.gatewayserver.GatewayserverApplication",

@@ -52,10 +52,10 @@ public class CartServiceImpl implements CartService {
             if(productFeignClient.validateProduct(dto.getId())){
                
                 
-                Cart cart=cartRepository.findByCustomerIdAndStatus(1L,CartStatus.PENDING.toString());
+                Cart cart=cartRepository.findByCustomerIdAndStatus(dto.getUserId(),CartStatus.PENDING.toString());
                 if(cart==null){
                      cart=new Cart();
-                     cart.setCustomerId(1L);
+                     cart.setCustomerId(dto.getUserId());
                      cartRepository.save(cart);
                 }
                 CartItem cartItem=cartItemService.findByCartAndProductId(cart,Long.parseLong(dto.getId()));
@@ -80,7 +80,7 @@ public class CartServiceImpl implements CartService {
     public Cart findCartByUserId(String userId) {
         // TODO Auto-generated method stub
        try {
-        Cart cart=cartRepository.findByCustomerIdAndStatus(Long.parseLong(userId),CartStatus.PENDING.toString());
+        Cart cart=cartRepository.findByCustomerIdAndStatus(userId,CartStatus.PENDING.toString());
         if(cart!=null)
             return cart;
         return null;

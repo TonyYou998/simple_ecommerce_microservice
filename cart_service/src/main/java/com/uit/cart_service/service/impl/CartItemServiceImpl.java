@@ -49,7 +49,9 @@ public class CartItemServiceImpl implements CartItemService {
         // TODO Auto-generated method stub
         if(cartItem!=null){
              cartItem.setQuantity(cartItem.getQuantity()+1);
+             
             cart.setStatus(CartStatus.PENDING.toString());
+
         }
         else{
             cartItem=new CartItem();
@@ -101,6 +103,56 @@ public class CartItemServiceImpl implements CartItemService {
         }
      
 
+        return null;
+    }
+
+    @Override
+    public CartItemDto increaseItem(CartItemDto dto) {
+        // TODO Auto-generated method stub
+        try {
+            CartItem cartItem=cartItemRepository.findById(Long.parseLong(dto.getCartId())).get();
+            if(cartItem!=null){
+                cartItem.setQuantity(Long.parseLong(dto.getQuantity())+1);
+                cartItemRepository.save(cartItem);
+                CartItemDto cartItemDto=new CartItemDto();
+                cartItemDto.setCartId(cartItem.getCart().getId().toString());
+                cartItemDto.setQuantity(cartItem.getQuantity().toString());
+                return cartItemDto;
+                
+            }
+
+        } catch (NumberFormatException ex) {
+            // TODO: handle exception
+            logger.debug(ex.getMessage());
+            throw new NumberFormatException();
+        }
+        
+        return null;
+    }
+
+    @Override
+    public CartItemDto removeItem(CartItemDto dto) {
+        // TODO Auto-generated method stub
+         try {
+            CartItem cartItem=cartItemRepository.findById(Long.parseLong(dto.getCartId())).get();
+            if(cartItem!=null){
+                if(Long.parseLong(dto.getQuantity())==0)
+                    return null;
+                cartItem.setQuantity(Long.parseLong(dto.getQuantity())-1);
+                cartItemRepository.save(cartItem);
+                CartItemDto cartItemDto=new CartItemDto();
+                cartItemDto.setCartId(cartItem.getCart().getId().toString());
+                cartItemDto.setQuantity(cartItem.getQuantity().toString());
+                return cartItemDto;
+                
+            }
+
+        } catch (NumberFormatException ex) {
+            // TODO: handle exception
+            logger.debug(ex.getMessage());
+            throw new NumberFormatException();
+        }
+        
         return null;
     }
    

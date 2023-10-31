@@ -16,6 +16,10 @@ public interface CartItemService {
 
     List<CartItemDto> findCartItemByUserId(String userId);
 
+    CartItemDto increaseItem(CartItemDto dto);
+
+    CartItemDto removeItem(CartItemDto dto);
+
    
     
 }

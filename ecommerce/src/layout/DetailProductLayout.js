@@ -7,43 +7,22 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { mainAPi } from '../api';
 import { useNavigate, useParams } from 'react-router-dom';
 
-
-
+import { jwtDecode } from "jwt-decode";
 
 export default function DetailProductLayout() {
+  const params= useParams();
+  const productId=params.id;
 
   const navigate=useNavigate();
-  const params= useParams();
-  const id=params.id;
   const [product,setProduct]=useState([]);
   const [isLogged,setLoggedStatus]=useState(false);
   const[image,setImage]=useState("");
 
-  const addToCart=()=>{
-
-      mainAPi.post("/cart-service/add-product", {
-        "id":id
-      }
-    //   ,{
-    //     headers: {
-    //       Accept: "application/json",
-    //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-          
-    //     }
-    // }
-    )
-      .then((result)=>{
-        console.log(result.data);
-        navigate("/cart/1");
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
-  }
+ 
   useEffect(()=>{
     async function fetchProduct(){
       try {
-        const response=await mainAPi.get(`/product-service/detail/${id}`)
+        const response=await mainAPi.get(`/product-service/detail/${productId}`)
         setProduct(response.data);
       } catch (error) {
         console.log(error);
@@ -85,6 +64,32 @@ export default function DetailProductLayout() {
         title: 'Basketball',
       }
     ];
+    
+ const addToCart=()=>{
+  
+  const token=jwtDecode(localStorage.getItem("token"));
+  console.log(token.sub);
+
+  mainAPi.post("/cart-service/add-product", {
+    "id":productId,
+    "userId":token.sub
+  }
+//   ,{
+//     headers: {
+//       Accept: "application/json",
+//       Authorization: `Bearer ${localStorage.getItem("token")}`,
+      
+//     }
+// }
+)
+  .then((result)=>{
+    console.log(result.data);
+    navigate("/cart");
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
+}
     const renderProduct=(data)=>{
        
         if(data){
@@ -102,7 +107,7 @@ export default function DetailProductLayout() {
           <CardMedia
           sx={{ height: 350,
           }}
-          // image="https://picsum.photos/350/300"
+         
           image={content&& image===""?content.imageUrl:image}
           title="green iguana"
         />
@@ -143,7 +148,7 @@ export default function DetailProductLayout() {
                <Button 
                 variant='contained'
                 endIcon={<ShoppingCartIcon/>}
-                onClick={addToCart}
+                onClick={()=>addToCart()}
                >
                 Add to cart
                </Button>
