@@ -1,0 +1,68 @@
+{
+  "realm" : "master",
+  "users" : [ {
+    "id" : "dbc54310-9362-4469-9139-4ea83d1940a2",
+    "createdTimestamp" : 1698718389615,
+    "username" : "admin",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "credentials" : [ {
+      "id" : "9864b696-b70e-463d-b9ef-625f88449739",
+      "type" : "password",
+      "createdDate" : 1698718389885,
+      "secretData" : "{\"value\":\"94cGku8ZfBj71dJ9YlinRCzbVgX/4rn7OAeE5jwuGCc=\",\"salt\":\"MwQYky+LOzi/q7vBwmimcg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-master", "admin" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "cdd82e39-a664-4a49-9250-85ebfae728ee",
+    "createdTimestamp" : 1698718496854,
+    "username" : "tanvuu998",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "tan",
+    "lastName" : "vuu",
+    "email" : "tanvuu998@gmail.com",
+    "credentials" : [ {
+      "id" : "09ec5902-643d-45ec-993f-d70d69f661e1",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1698718543514,
+      "secretData" : "{\"value\":\"PuecpIM1YsTSmf1X3kLKqsFEZ/GixQ6gLuJ16Nhbwmk=\",\"salt\":\"eue0HCj1ROOr5+XcMB1PuA==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "customer", "default-roles-master" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "2a19bedb-5dd7-42c0-9027-60024f0221ee",
+    "createdTimestamp" : 1698775085261,
+    "username" : "tonyyou998",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "firstName" : "tony",
+    "lastName" : "you",
+    "email" : "tonyyou998@gmail.com",
+    "credentials" : [ {
+      "id" : "1429b72f-054c-4707-a272-e540799c2000",
+      "type" : "password",
+      "createdDate" : 1698775085357,
+      "secretData" : "{\"value\":\"y+E+HdTKIwOC2lhbaf3WoODpt7sCTiB+SiSMmk47Xz4=\",\"salt\":\"3zlVRCZ0NrG+OmwAxAiyog==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-master" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}
