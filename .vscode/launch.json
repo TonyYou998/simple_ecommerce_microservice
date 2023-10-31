@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "GatewayserverApplication",
+            "request": "launch",
+            "mainClass": "com.uit.gatewayserver.GatewayserverApplication",
+            "projectName": "gatewayserver"
+        },
+        {
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",

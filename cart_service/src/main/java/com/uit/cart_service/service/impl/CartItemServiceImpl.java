@@ -57,6 +57,7 @@ public class CartItemServiceImpl implements CartItemService {
             cartItem.setProductId(Long.parseLong(id));
             cartItem.setQuantity(1L);
             cartItem.setCart(cart);
+
             cart.setStatus(CartStatus.PENDING.toString());
         }
         cartItemRepository.save(cartItem);
@@ -82,8 +83,10 @@ public class CartItemServiceImpl implements CartItemService {
                 cartItemDto.setProductName(productDto.getName());
                 cartItemDto.setImageUrl(productDto.getImageUrl());
                 cartItemDto.setProductId(productDto.getId());
-                cartItemDto.setQuality(item.getQuantity().toString());
+                cartItemDto.setQuantity(item.getQuantity().toString());
+                cartItemDto.setPrice(productDto.getPrice());
                 cartItemDtos.add(cartItemDto);
+
             }
             return cartItemDtos;
         }

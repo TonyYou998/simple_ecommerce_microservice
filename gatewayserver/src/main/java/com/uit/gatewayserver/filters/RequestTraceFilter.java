@@ -22,8 +22,10 @@ public class RequestTraceFilter implements GlobalFilter {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         HttpHeaders requestHeaders = exchange.getRequest().getHeaders();
         if (isCorrelationIdPresent(requestHeaders)) {
+            
             logger.debug("ecommerce-correlation-id found in tracing filter: {}. ",
                     filterUtility.getCorrelationId(requestHeaders));
+            
         } else {
             String correlationID = generateCorrelationId();
             exchange = filterUtility.setCorrelationId(exchange, correlationID);

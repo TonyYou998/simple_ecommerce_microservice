@@ -9,5 +9,6 @@ public class CartItemDto {
     private String productId;
     private String imageUrl;
     private String productName;
-    private String quality;
+    private String quantity;
+    private String price;
 }

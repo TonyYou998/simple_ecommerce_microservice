@@ -4,13 +4,14 @@ import{createRoot} from "react-dom/client";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { KeycloakProvider } from "keycloak-react-web";
 import UserService from './service/UserService';
 
 
-const renderApp=createRoot(document.getElementById("root")).render(
 
-      <App />
+const renderApp=createRoot(document.getElementById("root")).render(
+     
+           <App />
    
   );
   // UserService.initKeycloak(renderApp);

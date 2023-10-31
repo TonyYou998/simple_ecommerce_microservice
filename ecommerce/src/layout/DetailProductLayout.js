@@ -5,53 +5,36 @@ import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { mainAPi } from '../api';
-import { useParams } from 'react-router-dom';
-import UserService from '../service/UserService';
-import Keycloak from 'keycloak-js';
+import { useNavigate, useParams } from 'react-router-dom';
+
+
+
 
 export default function DetailProductLayout() {
+
+  const navigate=useNavigate();
   const params= useParams();
   const id=params.id;
   const [product,setProduct]=useState([]);
   const [isLogged,setLoggedStatus]=useState(false);
   const[image,setImage]=useState("");
-  let initOptions = {
-    url: 'http://localhost:7080/',
-    realm: 'master',
-    clientId: 'react-ac',
-    onLoad: 'check-sso', // check-sso | login-required
-    KeycloakResponseType: 'code',
-  
-    // silentCheckSsoRedirectUri: (window.location.origin + "/silent-check-sso.html")
-  }
 
-  let kc = new Keycloak(initOptions);
-  kc.init({
-    onLoad: initOptions.onLoad,
-    KeycloakResponseType: 'code',
-    silentCheckSsoRedirectUri: window.location.origin + "/silent-check-sso.html", 
-    checkLoginIframe: false,
-    pkceMethod: 'S256'
-  }).then((auth) => {
-    if (!auth) {
-      window.location.reload();
-    } else {
-      console.info("Authenticated");
-      console.log('auth', auth)
-      console.log('Keycloak', kc)
-      kc.onTokenExpired = () => {
-        console.log('token expired')
-      }
-    }
-  }, () => {
-    console.error("Authenticated Failed");
-  });
   const addToCart=()=>{
-      mainAPi.post("/cart-service/add-product", { 'Authorization': `${localStorage.getItem("token")}` }  ,{
+
+      mainAPi.post("/cart-service/add-product", {
         "id":id
-      })
+      }
+    //   ,{
+    //     headers: {
+    //       Accept: "application/json",
+    //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+          
+    //     }
+    // }
+    )
       .then((result)=>{
         console.log(result.data);
+        navigate("/cart/1");
       })
       .catch((err)=>{
         console.log(err);
@@ -70,22 +53,7 @@ export default function DetailProductLayout() {
     fetchProduct();
 
   },[]);
-  const  handleAddToCart=()=>{
-  
-    
-    if(!(kc.token !== null && kc.token !== undefined)){
-        kc.login();
-     
-    }
-    else{
-     
-        localStorage.setItem('token',UserService.getToken());
-        // addToCart();
-    }
-    
-   
-
-  }
+ 
   
   const itemData = [
     {
@@ -175,7 +143,7 @@ export default function DetailProductLayout() {
                <Button 
                 variant='contained'
                 endIcon={<ShoppingCartIcon/>}
-                onClick={handleAddToCart}
+                onClick={addToCart}
                >
                 Add to cart
                </Button>

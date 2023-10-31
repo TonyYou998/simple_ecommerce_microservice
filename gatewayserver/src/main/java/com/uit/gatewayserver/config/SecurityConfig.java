@@ -13,19 +13,28 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import org.springframework.security.oauth2.server.resource.authentication.ReactiveJwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.ReactiveJwtAuthenticationConverterAdapter;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.web.reactive.config.CorsRegistry;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
 
 import reactor.core.publisher.Mono;
 
 @Configuration
 @EnableWebFluxSecurity
-public class SecurityConfig {
+public class SecurityConfig implements WebFluxConfigurer{
+    @Override
+    public void addCorsMappings(CorsRegistry corsRegistry) {
+        corsRegistry.addMapping("/**")
+          .allowedOrigins("http://localhost:3000")
+          .allowedMethods("*")
+          .maxAge(3600);
+    }
     @Bean
     public SecurityWebFilterChain springSecurityWebFilterChain(ServerHttpSecurity serverHttpSecurity){
         serverHttpSecurity.authorizeExchange(exchanges->exchanges
         .pathMatchers("/api/v1/product-service/**")
         .permitAll()
         .pathMatchers("/api/v1/cart-service/**")
-        .hasRole("customer")
+        .permitAll()
         
         ).oauth2ResourceServer(oauth2ResourceServer->oauth2ResourceServer.jwt(jwt->jwt.jwtAuthenticationConverter(grantedAuthoritiesExtractor())));
         serverHttpSecurity.csrf(csrf->csrf.disable());
