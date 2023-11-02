@@ -39,3 +39,6 @@ For simple, i provided 3 keycloak configuration the first one is "master-realm.j
 The second file is "master-users-0.json" file this file contains all user account i have created in keycloak.
 finally, "react-app.json" is keycloak's client config if you were unable to import keycloak config file just use the default real of keycloak and import this file in create client.
 In general, for quickly start up please import my real configuration, there is a button to create new realm.
+
+UPDATE: To import keycloak configuration please open keycloak WEb UI at http://localhost:7080 with default username and password is admin. Then click on the select input option on the left panel you will see a master realm which is the default realm and an option to create a new realm. Click on create realm and paste the master-realm.json.
+In case of the keycloak setting file does not work you could use the default master realm of keycloak, click on the client tab on the left panel then import client and browse to react-app.json file. which will creates react cient and allows react app connect to keycloak server. One more step for user-self register, click on the realm setting on the left panel then open login tab on enable user registration. From now you could register yourself as a normal user.
