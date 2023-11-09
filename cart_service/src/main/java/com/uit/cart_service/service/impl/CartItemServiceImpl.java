@@ -19,8 +19,7 @@ import com.uit.cart_service.service.CartService;
 import com.uit.cart_service.util.CartStatus;
 
 import feign.FeignException.FeignClientException;
-import jakarta.annotation.PostConstruct;
-import lombok.AllArgsConstructor;
+
 import lombok.RequiredArgsConstructor;
 @Service
 // @AllArgsConstructor
