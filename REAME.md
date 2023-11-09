@@ -39,3 +39,6 @@ For simple, i provided 3 keycloak configuration the first one is "master-realm.j
 The second file is "master-users-0.json" file this file contains all user account i have created in keycloak.
 finally, "react-app.json" is keycloak's client config if you were unable to import keycloak config file just use the default real of keycloak and import this file in create client.
 In general, for quickly start up please import my real configuration, there is a button to create new realm.
+## 5. Reference
+My github repo https://github.com/TonyYou998/simple_ecommerce_microservice
+DB design https://drive.google.com/file/d/14EV5ys112Bu0Fz2RigLRgLa4b6idBgLi/view?usp=sharing

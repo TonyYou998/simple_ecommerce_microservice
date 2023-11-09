@@ -50,8 +50,6 @@ services:
   configserver:
     image: tonyyou998/ecommerce_config_server:1.0.0
     mem_limit: 700m
-    ports:
-      - "8071:8071"
     networks:
       - uit
 
@@ -114,8 +112,7 @@ services:
    
   product_service:
    image: tonyyou998/ecommerce_product_service:1.3.0
-   ports:
-     - "8084:8084"
+
    networks:
    - uit
    depends_on:
@@ -136,8 +133,7 @@ services:
   
   cart_service:
    image: tonyyou998/ecommerce_cart_service:1.3.0
-   ports:
-     - "8081:8081"
+  
    networks:
    - uit
    depends_on:
